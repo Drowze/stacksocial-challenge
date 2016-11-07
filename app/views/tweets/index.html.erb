@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="panel">
+    <div class="form-group">
+      <h2>Enter a user's twitter handle to view their tweets</h2>
+      <div class="form-control">
+        <%= form_tag(tweets_path, method: :get) do %>
+          <%= label_tag "twitter handle" %>
+          <%= text_field_tag('id')  %>
+          <%= submit_tag 'Submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  
+<div class="container">
+  <% unless params[:id].nil? %>
+    <ul class="list-group">
+      <h3>Last tweets of <%= @user.name %> (@<%= @user.screen_name %>)</h3>
+        <% @tweets.each do |tweet| %>
+        <li class="list-group-item">
+          <%= tweet.full_text %>
+        </li>
+        <% end %>
+    </ul>
+  <% end %>
+</div>

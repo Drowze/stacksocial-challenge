@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="panel">
+    <div class="form-group">
+      <h2>Enter a user's twitter handle to view their tweets</h2>
+      <div class="form-control">
+        <%= form_tag(tweets_path, method: :get) do %>
+          <%= label_tag "twitter handle" %>
+          <%= text_field_tag('handle')  %>
+          <%= submit_tag 'Submit' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,8 +3,8 @@ class TweetsController < ApplicationController
 
   def index
     if user_signed_in?
-      @user = $twitter.user(params[:id])
-      @tweets = $twitter.user_timeline(params[:id])
+      @user = TwitterUser.find(params[:handle])
+      @tweets = @user.tweets(limit: 25)
     else
       redirect_to new_user_session_path
     end
